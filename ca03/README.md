@@ -2,6 +2,9 @@
 
 November 9, 2014 | [Song Gao](https://song.gao.io/) / szg0031
 
+URL: [http://comp6370.song.gao.io/](http://comp6370.song.gao.io/)
+Source Code: [https://github.com/songgao/comp6370/tree/master/ca03](https://github.com/songgao/comp6370/tree/master/ca03)
+
 ## Introduction
 
 A simple web application is built to demonstrate a particular kind of security breach - SQL injection, where an attacker can execute malicious database queries by entering carefully created strings into an input on the web application which is then used by back-end to perform database queries.
@@ -63,19 +66,19 @@ rows, err := s.db.Query("SELECT name FROM Names WHERE name like '%?%'", r.URL.Qu
 
 Open the page [http://comp6370.song.gao.io/](http://comp6370.song.gao.io/), the browser shows following page. The page does one simple thing: searching for people in the database.
 
-![Start Screen](./screenshots/start.png)
+![Start Screen](https://github.com/songgao/comp6370/raw/master/ca03/screenshots/start.png)
 
 Following screenshot shows how a normal operation is done. A string `"song"` is entered and the database searches in all names for the ones that contains `"song"`, and returns "Song Gao" - the only one that matches.
 
-![Normal Query](./screenshots/normal.png)
+![Normal Query](https://github.com/songgao/comp6370/raw/master/ca03/screenshots/normal.png)
 
 Now let's try and see if the back-end sanitizes the input, by entering `song%' --`. If the back-end sanitizes the input, this should return nothing; otherwise, it would return exactly the same thing as we had in last screenshot.
 
-![Injection Test](./screenshots/test.png)
+![Injection Test](https://github.com/songgao/comp6370/raw/master/ca03/screenshots/test.png)
 
 Bang! Security breach! Here's something fun. Let's enter `song%' or (1=1) --`. This effectively invalidates the `name='%?%'` condition, and returns all names in the database:
 
-![Injection](./screenshots/injection.png)
+![Injection](https://github.com/songgao/comp6370/raw/master/ca03/screenshots/injection.png)
 
 Now, this doesn't seem to be very harmful, but if the same security breach exists in a system used to query sensitive information, this can lead to information leaking. For example, a system can have a table that stores private messages, and a client API call is provided to query personal message history. If injection is possible here, a malicious user can create a query that pulls other people's private messages.
 
