@@ -1,0 +1,9 @@
+This program implements a simple encryption algorithm as described in CA01 from
+Dr. Umphress's COMP6370 class in Fall 2014.
+
+The Makefile's default target is to produce "encrypt" binary. Type "./encrypt
+-h" for usage info. The default (without any flags) is to use "plain.txt" as
+input file and write result into "result.txt".
+
+"run" is another target defined in the Makefile that builds the program, run
+it, and clean up target files and the binary.
